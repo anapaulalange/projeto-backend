@@ -1,4 +1,0 @@
-console.log(“Olá, mundo!”)
-
-
-
