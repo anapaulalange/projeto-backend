@@ -3,6 +3,7 @@ const router = express.Router() //configurando a primeira parte da rota
 const { v4: uuidv4 } = require('uuid');
 
 const app = express() //iniciando o app
+app.use(express.json())
 const porta = 3333 //criação da porta
 
 const mulheres = [
@@ -41,6 +42,34 @@ function criaMulheres(request, response) {
     mulheres.push(novaMulher)
 
     response.json(mulheres)
+
+    function corrigeMulheres(request, response) {
+        function encontraMulher(mulher) {
+            if(mulher.id === request.params.id) {
+                return mulher
+            }
+        }
+
+        const mulherEncontrada = mulheres.find(encontraMulher)
+
+        if (request.body.nome) {
+            mulherEncontrada = request.body.nome
+        }
+
+        if (request.body.minibio) {
+            mulherEncontrada = request.body.minibio
+        }
+
+        if (request.body.imagem) {
+            mulherEncontrada = request.body.imagem
+        }
+
+        response.json = mulheres
+    }
+
+    function deletaMulheres(request, response) {
+
+    }
 }
 
 function mostraPorta() {
@@ -49,4 +78,6 @@ function mostraPorta() {
 
 app.use(router.get('/mulheres', mostraMulheres))
 app.use(router.post('/mulheres', criaMulheres))
+app.use(router.patch('/mulheres', corrigeMulheres))
+app.use(router.delete('/mulheres', deletaMulheres))
 app.listen(porta, mostraPorta)
