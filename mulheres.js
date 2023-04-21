@@ -42,11 +42,12 @@ function criaMulheres(request, response) {
     mulheres.push(novaMulher)
 
     response.json(mulheres)
+}
 
-    function corrigeMulheres(request, response) {
-        function encontraMulher(mulher) {
-            if(mulher.id === request.params.id) {
-                return mulher
+function corrigeMulheres(request, response) {
+    function encontraMulher(mulher) {
+        if(mulher.id === request.params.id) {
+            return mulher
             }
         }
 
@@ -67,9 +68,8 @@ function criaMulheres(request, response) {
         response.json = mulheres
     }
 
-    function deletaMulheres(request, response) {
+function deletaMulheres(request, response) {
 
-    }
 }
 
 function mostraPorta() {
