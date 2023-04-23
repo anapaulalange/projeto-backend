@@ -69,7 +69,15 @@ function corrigeMulheres(request, response) {
     }
 
 function deletaMulheres(request, response) {
+    function todasMenosEla(mulher) {
+        if (mulher.id !== requests.param.id) {
+            return mulher
+        }
+    }
 
+    const mulheresQueFicam = mulheres.filter(todasMenosEla)
+
+    response.json(mulheresQueFicam)
 }
 
 function mostraPorta() {
